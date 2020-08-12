@@ -46,6 +46,9 @@ dependencies:
   # Localized formatting
   intl: ^0.16.1
 
+  # Verify email format
+  email_validator: ^1.0.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

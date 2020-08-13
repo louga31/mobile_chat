@@ -12,12 +12,12 @@ import 'package:provider/provider.dart';
 
 class DatabaseService {
   Future<User> getUser(String userId) async {
-    DocumentSnapshot userDoc = await userRef.document(userId).get();
+    DocumentSnapshot userDoc = await usersRef.document(userId).get();
     return User.fromDoc(userDoc);
   }
 
   Future<List<User>> searchUsers(String currentUserID, String name) async {
-    QuerySnapshot userSnap = await userRef
+    QuerySnapshot userSnap = await usersRef
         .where('name', isGreaterThanOrEqualTo: name)
         .getDocuments();
 
@@ -31,7 +31,7 @@ class DatabaseService {
     return users;
   }
 
-  Future<bool> createChat(
+  Future<void> createChat(
     BuildContext context,
     String name,
     File file,
@@ -60,7 +60,7 @@ class DatabaseService {
       'name': name,
       'imageUrl': imageUrl,
       'recentMessage': 'Chat created',
-      'recentSender': 'System',
+      'recentSender': '',
       'recentTimestamp': Timestamp.now(),
       'memberIds': memberIds,
       'memberInfo': memberInfo,

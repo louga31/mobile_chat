@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobile_chat/models/user_data.dart';
 import 'package:mobile_chat/screens/home_screen.dart';
 import 'package:mobile_chat/screens/login_screen.dart';
@@ -11,6 +12,7 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => UserData()),
+    Provider<ImagePicker>(create: (_) => ImagePicker()),
     Provider<AuthService>(create: (_) => AuthService()),
     Provider<DatabaseService>(create: (_) => DatabaseService()),
     Provider<StorageService>(create: (_) => StorageService()),
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Firebase Chat',
-      debugShowCheckedModeBanner: false,
+      //debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
